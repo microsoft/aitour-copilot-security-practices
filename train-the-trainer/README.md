@@ -21,29 +21,7 @@ code.
 | PPT Recording     | - [Presentation] | Video Recording of the PowerPoint slides |
 
 
-## Get Started
-
-This training repository is divided in to the following sections:
-
-| [Slides](#slides) | [Demos](demos/README.md) | [Deployment](deployment/README.md) | 
-|-------------------|---------------------------|--------------------------------------
-| 28 slides - 30 minutes| 1 demos - 15 minutes | Demo setup
-
-### Timing
-
-## Deployment / Preparation
-
->**What's Here?** Deploying the demo environment on Azure - including the prerequisites.
-
-[Instructions and prerequisites are outlined here](deployment/README.md). 
-
 
 ## Demos
 
-> **What's Here?** Pre-delivery preparation, stage ready videos, required files (such as JSON templates), and walk-through videos
-
-Detailed explanations of each demonstration associated with this presentation can be found in this section. There are 3 "live from stage" technical demonstrations that utilize a number of tools both in and out of Azure. [You can get a high level overview of the tools and how we will be using them here](demos/README.md).
-
-| Demo 	                                                                                               | Minutes | Video |
--------------------------------------------------------------------------------------------------------|---------|----------------- | 
-|
+Coming Soon - Demo environments will be hosted by Skillable.   Attendees will have a tenant that they can login to and follow along during the demo/walkthrough sections of the presentation. 
