@@ -18,7 +18,7 @@ AI Hub
 
 
 ## Training Resources and Continued Learning
-For Training Resources :  [Training](train-the-trainer/README.md)
+For Training Resources :  [Training](session-delivery-resources/README.md)
 
 | Resources          | Links                             | Description        |
 |:-------------------|:----------------------------------|:-------------------|
