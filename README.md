@@ -1,10 +1,10 @@
-# WRK510: Data, Security, and compliance practices for Copilot for Microsoft 365
+# WRK510: Data, Security, and compliance practices for Microsoft 365 Copilot
 
 ![Session cover image with a bright "AI" text in 3D over a blue and purple abstract background.](img/session-cover.png)
 
 ## Session Desciption
 
-In this workshop you will learn about Data, Security, and compliance practices for Copilot for Microsoft 365.   We will talk through how SharePoint, Copilot, and Purview interact.   We will walk through the Core tasks that should be completed, and we will talk through the AI Hub and how it can help to simplify some of this process.
+In this workshop you will learn about Data, Security, and compliance practices for Microsoft 365 Copilot.   We will talk through how SharePoint, Copilot, and Purview interact.   We will walk through the Core tasks that should be completed, and we will talk through the AI Hub and how it can help to simplify some of this process.
 
 ## Learning Outcomes
 Understand what controls are availble via Sharepoint and how to enable them.\
