@@ -17,7 +17,7 @@ code.
 
 | Resources          | Links                            | Description |
 |-------------------|----------------------------------|-------------------|
-| PowerPoint        | - [Presentation](https://aka.ms/AAryrb3) | Slides |
+| PowerPoint        | - [Presentation](https://aka.ms/AAs970k) | Slides |
 | PPT Recording     | - [Video](https://aka.ms/AAs4yna)| Video Recording of the PowerPoint slides |
 
 
