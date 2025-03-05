@@ -1,138 +1,131 @@
-<!--TOC-->
-  - [Launching Data Explorer](#launching-data-explorer)
-    - [Updating Content Explorer List Viewer Permissions](#updating-content-explorer-list-viewer-permissions)
-    - [Viewing which SharePoint sites have sensitive data in them](#viewing-which-sharepoint-sites-have-sensitive-data-in-them)
-  - [SharePoint Site Permissions](#sharepoint-site-permissions)
-  - [Running Sharing Reports in OneDrive](#running-sharing-reports-in-onedrive)
-  - [Setting the default link type](#setting-the-default-link-type)
-    - [Setting the Tenant Default](#setting-the-tenant-default)
-    - [Setting at the Site Level](#setting-at-the-site-level)
-  - [Default Link expiration](#default-link-expiration)
-  - [Creating a DLP Policy](#creating-a-dlp-policy)
-  - [Creating a Retention Policy](#creating-a-retention-policy)
-<!--/TOC-->
 
-## Launching Data Explorer
+- [Identify Popular Sites and Oversharing](#identify-popular-sites-and-oversharing)
+  - [Review Active Sites Report](#review-active-sites-report)
+  - [Run a DSPM for AI Data Assessment](#run-a-dspm-for-ai-data-assessment)
+- [Update, Audit, and Monitor Sharing](#update-audit-and-monitor-sharing)
+  - [Disable Everyone Except External User in People Picker](#disable-everyone-except-external-user-in-people-picker)
+  - [Enable Audit and Configure AI Usage Monitoring](#enable-audit-and-configure-ai-usage-monitoring)
+  - [Create a DLP policy to audit sharing links](#create-a-dlp-policy-to-audit-sharing-links)
+- [Configure site and document privacy setting](#configure-site-and-document-privacy-setting)
+  - [Review Purview label publishing rules](#review-purview-label-publishing-rules)
+- [Configure DLP for Copilot](#configure-dlp-for-copilot)
+  - [Set site privacy label](#set-site-privacy-label)
+  - [Set default document library label](#set-default-document-library-label)
+
+## Identify Popular Sites and Oversharing
+
+### Review Active Sites Report
 
 1. Launch Lab Environment
 2. Launch Microsoft Edge via the icon on the desktop
-3. Type `https://purview.microsoft.com` into Edge
+3. Type `https://admin.microsoft.com` into Edge
 4. Login using the administrator credentials provided in the lab
-5. Acknowledge any prompt around the new purview admin portal
-6. Click on **Solutions** on the left-hand side and then **data loss prevention**
-7. Expand **Explorers** in the left nav rail and click on **Data Explorer**
-8. Click on **Credit Card Number** within the list in Data Explorer
-9. Click on **SharePoint** on the right-hand side. You **WILL** be prompted that you do **NOT** have permissions yet.
-10. Click **Close** on the prompt
+5. Click **show all** to expand the list of admin centers and the click **SharePoint**
+6. In the left-hand nav, expand **Sites** and click **Active sites**
+7. Scroll to the right on the Active sites list and sort by **Page Views**
 
-### Updating Content Explorer List Viewer Permissions
-
-1. Click on **Settings Icon** on the left nav rail
-2. Select** Roles and Scopes**, and then **Role Groups**
-3. In the search bar at the top right type in “Content Explorer”
-4. Select the **Content Explorer List Viewer** group and then click Edit at the top
-5. Click on the **Choose Users** button on the screen
-6. In the search bar at the top type in “admin”
-7. Select the **MOD Administrator Account** and then click the **Select** button at the bottom and then click on **next**
-8. Wait on submitting to finish and then click** Done**
-9. Close the Browser window (IMPORTANT)
-
-### Viewing which SharePoint sites have sensitive data in them
+### Run a DSPM for AI Data Assessment
 
 1. Launch Microsoft Edge via the icon on the desktop
 2. Type `https://purview.microsoft.com` into Edge
 3. Login using the administrator credentials provided in the lab
-4. Acknowledge any prompt around the new purview admin portal
-5. Click on **solutions** on the left-hand side and then **data loss prevention**
-6. Expand **Explorers** in the left nav rail and click on **Data Explorer**
-7. Click on **Credit Card Number** within the list in Data Explorer
-8. Click on **SharePoint** again this time you can see the Site that’s contain Credit Card data. These are the sites you should be running reviews on.
+4. Expand **solutions** on the left hand rail and select **DSPM for AI**
+5. Select **Data assessments** from the left hand pane
+6. Click on **Create assessment**
+7. Name the assessment **AI Tour 510** and click next
+8. Select **ALL / Include All Users** and click next
+9. Observe that you can choose to limit to certain sites (such as Copilot referenced) by picking **scope sites**.  Select **include all sites** and click next
+10. Click **Save and Run**
+11. Click **Done**
+12. *Optional* Review the existing oversharing assessments to see the results of the weekly scans
 
-## SharePoint Site Permissions
+## Update, Audit, and Monitor Sharing
 
-1. Click on the **App launcher**, click on **SharePoint icon**
-2. Click on **My Sites** up at the top
-3. Select a site
-4. Click on the **Settings gear** icon at the top right
-5. Click on **Settings**
-6. Click on **Site Usage**
-7. Scroll down to the “Shared with external users” and Click on **“Run report”**
-8. Click on **Save** to save the report
+### Disable Everyone Except External User in People Picker
 
-## Running Sharing Reports in OneDrive
+1. Launch Microsoft Edge via the icon on the desktop
+2. Open the link `https://learn.microsoft.com/en-us/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps#example-2`
+3. Review the SharePoint Online cmdlet to disable the EEEU option
 
-1. Click on the **App launcher** up at the top, then click on the **OneDrive icon**
-2. Click on the **Settings** icon in the top right, then click on **OneDrive settings** at the very top of the list
-3. Click on **More Settings** on the left nav rail
-4. Click on **Run Sharing Report**
-5. In the destination box click on **Save**
+### Enable Audit and Configure AI Usage Monitoring
 
-## Setting the default link type
+1. If you are not already at the Purview portal, type `https://purview.microsoft.com` into Edge
+2. Expand **solutions** on the left hand rail and select **DSPM for AI**
+3. Confirm that **Microsoft Purview Audit** is enabled by looking for the green checkmark in **Get started**
+4. In the list of **Recommendations**, find the card titled **Control unethical behavior in AI**.  Click **View details**
+5. Review the Communication Compliance policy to be created, click **Create policies**
+6. Review the results and then click **Close**
 
-### Setting the Tenant Default
+### Create a DLP policy to audit sharing links
 
-1. Launch Edge and go to `https://admin.microsoft.com`
-2. Click on the **SharePoint Admin Center** in the left nav rail
-3. In the SharePoint Admin Center expand **Policies**
-4. Click on **Sharing**
-5. Scroll down to the File and folder links section
-6. Select the **“Only people in your organization”** radio button
-7. Select the **“View”** radio button under “Choose the permissions that’s selected by default for sharing links”
-8. Click the **Save** button
+1. If you are not already at the Purview portal, type `https://purview.microsoft.com` into Edge
+2. Expand **solutions** on the left hand rail and select **Data Loss Prevention**
+3. In the left hand nav, click on **Policies**
+4. Click **Create Policy**
+5. In categories select **Financial**
+6. In Regulations select **U.S. Financial Data** and then click **Next**
+7. Name the policy **AI Tour 510**
+8. On the Admin Units page, click **Next**
+9. On the Choose where to apply the policy page, *deselect* all items except for **SharePoint sites** and **OneDrive Accounts**
+10. On define policy settings click **Next**
+11. Observe that the rule will detect when content is shared outside the organization. Click **Next**
+12. Observe the default protection settings.  Click **Next**
+13. Observe the available access and override settings. Click **Next**
+14. On the Policy Mode page, chose to **Run the policy in simulation mode**.  Click **Next**
+15. Click **Submit**
 
-### Setting at the Site Level
+## Configure site and document privacy setting
 
-1. In the SharePoint Admin Center Expand** Sites** in the left nav rail and Select **Active Sites**
-2. Click on the **3 dots** at the top and then click **Sharing**
-3. Under the External sharing section select **“Only People in your organization”**
-4. Expand the **Default sharing link type**
-5. Clear the checkbox on **“Same as organization level setting”**
-6. Select **“People with existing access”**
-7. Click **Save**
+### Review Purview label publishing rules
 
-## Default Link expiration
+1. If you are not already at the Purview portal, type `https://purview.microsoft.com` into Edge
+2. Expand **solutions** on the left hand rail and select **Information Protection**
+3. In the left hand nav, select **Sensitivity Labels**
+4. Expand **Confidential** and select **All Employees**
+5. Click the icon titled **Edit Label**
+6. On Provide basic details for this label, click **Next**
+7. On Define the scope for this label, review the configured settings and see how it is set to control **Groups & Sites**.  Click **Next**
+8. Review all of the configuration settings under items. Click **Next** to move through the configuration pages.
+9. On Define protection settings for groups and sites, observe the settings that are configured.  Note how they align to the settings you can configure on SharePoint Sites and Teams.  Click **Next**
+10. Observe that the site privacy is set to **Private**.  Click **Next**
+11. Observe that the default sharing is set to **Only people in your organization**. Note how this aligns to the sharing slider in SharePoint site settings.  Click **Next**
+12. Click **Cancel** to back out of the configuration pages.
 
-1. Launch the SharePoint Admin Center
-2. Expand **Policies**, and click on **Sharing**
-3. Scroll down to the **“Choose expiration and permissions options for Anyone links”**
-4. Select the box next to **“These links must expire with this many days”**
-5. Type in 15**** in the days box
-6. Click on the drop down for Files and change it to **View** from View and Edit
-7. Scroll down and Click **Save**
+## Configure DLP for Copilot
 
-## Creating a DLP Policy
+1. If you are not already at the Purview portal, type `https://purview.microsoft.com` into Edge
+2. Expand **solutions** on the left hand rail and select **Data Loss Prevention**
+3. In the left hand nav, click on **Policies**
+4. Click **Create Policy**
+5. Under Categories, select **Custom**
+6. Under Regulations, select **Custom Policy**. Click **Next**
+7. Name the policy **AI Tour - Block Copilot**
+8. On the Admin Units page, click **Next**
+9. On the Choose where to apply the policy page, *deselect* all items except for **Microsoft 365 Copilot (preview)**. Click **Next**
+10. On Define policy settings, click **Next**
+11. Click **Create Rule**
+12. Name the rule **Copilot Sensitivity Label**
+13. Click **Add condition** and select **Content Contains**
+14. Click **Add** and select **Sensitivity Label**. Select the **Highly Confidential / All Employees** sensitivity label.  Click **Add**
+15. Click **Add an Action** and select **Prevent Copilot from processing content (preview)**
+16. Click **Save** and then click **Next**
+17. Observe that you cannot run this policy in simulation mode. Click **Next** and click **Submit**
 
-1. Launch Edge and go to `https://purview.microsoft.com`
-2. Click on **Solutions** and then click on **Data Loss Prevention**
-3. Click on **Policies**
-4. Click on **“Create Policy”**
-5. Click **Financial**
-6. Click **U.K. Financial Data**
-7. Click **Next**
-8. Name the Policy
-9. On the Assign Admin units page click **Next**
-10. On the Locations page review what Locations are selected and then click **Next**
-11. On the Define Policy Settings page, confirm the policy you have selected and then click **Next**
-12. On the Info to protect page, confirm the “Detect when this content is shared from Microsoft 365” is checked and click **Next**
-13. On the Protection actions page, confirm and change these settings as you see fit and then click **Next**
-14. On the Customize access and override settings page, confirm and adjust these settings as you see fit and then click **Next**
-15. On the Policy Mode page, select the **“Turn the policy on immediately”** radio button and click **Next**
-16. On the Summary page, confirm everything you have selected and then finally click **Submit**
-17. On the Finish page, review any recommendations and then click **Done**
+### Set site privacy label
 
-## Creating a Retention Policy
+1. Type `https://admin.microsoft.com` into Edge
+2. Login using the administrator credentials provided in the lab
+3. Click **show all** to expand the list of admin centers and the click **SharePoint**
+4. In the left-hand nav, expand **Sites** and click **Active sites**
+5. Select a **Team Site** such as the **Mark 8 Project Team**
+6. Click on the **URL** to open up the site
+7. Click on the **Site Gear** and select **Site Information**
+8. Observe how you can set the stie privacy either by changing the privacy setting or by setting the sensitivity to Highly Confidential / All Employees. Note how the privacy settings are no longer able to be changed once the sensitivity label is selected.
+9. Click **Cancel**
 
-1. Launch Edge and navigate to `http://purview.microsoft.com`
-2. Click on **Solutions** and then click on **Data Lifecycle Management** on the left nav rail
-3. Click on **Policies** on the left and then **Retention Policies**
-4. Click **new retention policy**
-5. On the Name your retention policy page, type in** “10 year deletion policy”** for the policy name and click **Next**
-6. On the Policy Scope page click **Next** as we want it to apply to the full directory
-7. Select the *Static* Radio button and click **Next**
-8. Confirm the correct locations are selected and then click **Next**
-9. In Retention Settings change “Retain items for a specific period" to **10 years**
-10. Change “Start the retention period based on” to **“when items were created”**
-11. Change “At the end of the retention period” to **“Delete items automatically”**
-12. Click **Next**
-13. Review the Finish Page and then click **Submit**
-14. Review recommendations and then click **Done**
+### Set default document library label
+
+1. On the **Mark 8 Project Team** Click on **Documents** in the left hand Nav
+2. Click on the site gear and select **Library Settings**
+3. Review the list of available **Default Sensitivity Labels** and select **Confidential / All Employees**.  Click **Save**
+4. Create a new **Word Document** and note how the document is immediately labeled as **Confidential / All Employees**.
